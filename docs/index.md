@@ -72,10 +72,10 @@ connection "namecheap" {
 ```
 
 Environment variables are also available as an alternate configuration method:
-- NAMECHEAP_USERNAME
-- NAMECHEAP_API_USER
-- NAMECHEAP_API_KEY
-- NAMECHEAP_CLIENT_IP
+- `NAMECHEAP_USERNAME`
+- `NAMECHEAP_API_USER`
+- `NAMECHEAP_API_KEY`
+- `NAMECHEAP_CLIENT_IP`
 
 ## Get involved
 
