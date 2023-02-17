@@ -29,7 +29,6 @@ func connectUncached(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrate
 	username := os.Getenv("NAMECHEAP_USERNAME")
 	apiUser := os.Getenv("NAMECHEAP_API_USER")
 	apiKey := os.Getenv("NAMECHEAP_API_KEY")
-	clientIP := os.Getenv("NAMECHEAP_CLIENT_IP")
 
 	// Prefer config settings
 	namecheapConfig := GetConfig(d.Connection)
@@ -41,9 +40,6 @@ func connectUncached(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrate
 	}
 	if namecheapConfig.APIKey != nil {
 		apiKey = *namecheapConfig.APIKey
-	}
-	if namecheapConfig.ClientIP != nil {
-		clientIP = *namecheapConfig.ClientIP
 	}
 
 	// Error if the minimum config is not set
@@ -57,15 +53,15 @@ func connectUncached(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydrate
 	if apiKey == "" {
 		return conn, errors.New("api_key must be configured")
 	}
-	if clientIP == "" {
-		return conn, errors.New("client_ip must be configured")
-	}
 
 	conn = namecheap.NewClient(&namecheap.ClientOptions{
-		UserName:   username,
-		ApiUser:    apiUser,
-		ApiKey:     apiKey,
-		ClientIp:   clientIP,
+		UserName: username,
+		ApiUser:  apiUser,
+		ApiKey:   apiKey,
+		// This is required by the SDK, but the server seems to only look at the actual
+		// client IP that made the request. So, provide a dummy value for convenience
+		// to reduce configuration complexity.
+		ClientIp:   "1.2.3.4",
 		UseSandbox: false,
 	})
 
