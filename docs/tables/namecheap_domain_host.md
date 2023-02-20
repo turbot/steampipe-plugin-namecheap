@@ -13,7 +13,7 @@ select
   type,
   address,
   ttl,
-  mx_pref 
+  mx_pref
 from
   namecheap_domain_host
 order by
@@ -30,7 +30,7 @@ select
   type,
   address,
   ttl,
-  mx_pref 
+  mx_pref
 from
   namecheap_domain_host
 where

@@ -25,7 +25,7 @@ select
 from
   namecheap_domain
 order by
-  domain
+  domain;
 ```
 
 ```
@@ -75,7 +75,6 @@ Environment variables are also available as an alternate configuration method:
 - `NAMECHEAP_USERNAME`
 - `NAMECHEAP_API_USER`
 - `NAMECHEAP_API_KEY`
-- `NAMECHEAP_CLIENT_IP`
 
 ## Get involved
 

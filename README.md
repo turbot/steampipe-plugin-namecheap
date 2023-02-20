@@ -45,7 +45,7 @@ select
 from
   namecheap_domain
 order by
-  domain
+  domain;
 ```
 
 ```
