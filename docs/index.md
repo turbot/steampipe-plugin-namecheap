@@ -51,6 +51,15 @@ Download and install the latest Namecheap plugin:
 steampipe plugin install namecheap
 ```
 
+### Credentials
+
+| Item        | Description                                                                                                                                                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Credentials | Namecheap requires a `username` or `API user` and an [API key](https://www.namecheap.com/support/api/intro/) for all requests.                                                                |
+| Permissions | API keys have the same permissions as the user who creates them, and if the user permissions change, the API key permissions also change.                                                         |
+| Radius      | Each connection represents a single Namecheap Installation.                                                                                                                                           |
+| Resolution  | 1. Credentials explicitly set in a steampipe config file (`~/.steampipe/config/namecheap.spc`)<br />2. Credentials specified in environment variables, e.g., `NAMECHEAP_USERNAME`, `NAMECHEAP_API_USER` and `NAMECHEAP_API_KEY`. |
+
 ### Configuration
 
 Installing the latest namecheap plugin will create a config file (`~/.steampipe/config/namecheap.spc`) with a single connection named `namecheap`:
@@ -61,20 +70,31 @@ Configure your account details in `~/.steampipe/config/namecheap.spc`:
 connection "namecheap" {
   plugin = "namecheap"
 
-  # Authentication information
-  username  = "janedoe"
-  api_key   = "33d0d62a6a163083ba7b3bab31bd6612"
+  # Username/API User is required for requests. Required.
+  # This can also be set via the `NAMECHEAP_USERNAME` environment variable.
+  # username = "janedoe"
 
-  # IP address of the client making the request,
-  # must be granted permission in Namecheap
-  client_ip = "1.2.3.4"
+  # A specific API User can also be defined. Optional, by default, this will be
+  # set to the `username`.
+  # This can also be set via the `NAMECHEAP_API_USER` environment variable.
+  # api_user = "janedoe"
+
+  # API key for requests. Required.
+  # See instructions at https://www.namecheap.com/support/api/intro/.
+  # This can also be set via the `NAMECHEAP_API_KEY` environment variable.
+  # api_key = "33d0d62a6a163083ba7b3bab31bd6612"
 }
 ```
 
-Environment variables are also available as an alternate configuration method:
-- `NAMECHEAP_USERNAME`
-- `NAMECHEAP_API_USER`
-- `NAMECHEAP_API_KEY`
+### Credentials from Environment Variables
+
+The Namecheap plugin will use the standard Namecheap environment variables to obtain credentials **only if other arguments (`username`, `api_user` and `api_key`) are not specified** in the connection:
+
+```sh
+export NAMECHEAP_USERNAME=janedoe
+export NAMECHEAP_API_USER=janedoe
+export NAMECHEAP_API_KEY=33d0d62a6a163083ba7b3bab31bd6612
+```
 
 ## Get involved
 

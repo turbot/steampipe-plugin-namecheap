@@ -17,18 +17,8 @@ Install the plugin with [Steampipe](https://steampipe.io):
 steampipe plugin install namecheap
 ```
 
-Configure your account details in `~/.steampipe/config/namecheap.spc`:
+Configure your [credentials](https://hub.steampipe.io/plugins/turbot/namecheap#credentials) and [config file](https://hub.steampipe.io/plugins/turbot/namecheap#configuration).
 
-```hcl
-connection "namecheap" {
-  # Authentication information
-  username  = "janedoe"
-  api_key   = "33d0d62a6a163083ba7b3bab31bd6612"
-  # IP address of the client making the request,
-  # must be granted permission in Namecheap
-  client_ip = "1.2.3.4"
-}
-```
 
 Run steampipe:
 
