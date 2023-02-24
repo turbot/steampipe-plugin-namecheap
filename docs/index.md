@@ -41,13 +41,13 @@ order by
 
 - **[Table definitions & examples →](/plugins/turbot/namecheap/tables)**
 
-## Get started
+## Quick start
 
 ### Install
 
 Download and install the latest Namecheap plugin:
 
-```bash
+```sh
 steampipe plugin install namecheap
 ```
 
@@ -86,9 +86,7 @@ connection "namecheap" {
 }
 ```
 
-### Credentials from Environment Variables
-
-The Namecheap plugin will use the standard Namecheap environment variables to obtain credentials **only if other arguments (`username`, `api_user` and `api_key`) are not specified** in the connection:
+Alternatively, you can also use the standard Namecheap environment variables to obtain credentials **only if other arguments (`username`, `api_user` and `api_key`) are not specified** in the connection:
 
 ```sh
 export NAMECHEAP_USERNAME=janedoe
