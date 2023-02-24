@@ -11,11 +11,15 @@ Use SQL to query models, completions and more from Namecheap.
 
 ## Quick start
 
-Install the plugin with [Steampipe](https://steampipe.io):
+### Install
 
-```shell
+Download and install the latest Namecheap plugin:
+
+```bash
 steampipe plugin install namecheap
 ```
+
+Configure your [credentials](https://hub.steampipe.io/plugins/turbot/namecheap#credentials) and [config file](https://hub.steampipe.io/plugins/turbot/namecheap#configuration).
 
 Configure your account details in `~/.steampipe/config/namecheap.spc`:
 
@@ -24,10 +28,14 @@ connection "namecheap" {
   # Authentication information
   username  = "janedoe"
   api_key   = "33d0d62a6a163083ba7b3bab31bd6612"
-  # IP address of the client making the request,
-  # must be granted permission in Namecheap
-  client_ip = "1.2.3.4"
 }
+```
+
+Or through environment variables:
+
+```sh
+export NAMECHEAP_USERNAME=janedoe
+export NAMECHEAP_API_KEY=33d0d62a6a163083ba7b3bab31bd6612
 ```
 
 Run steampipe:
@@ -45,7 +53,7 @@ select
 from
   namecheap_domain
 order by
-  domain
+  domain;
 ```
 
 ```

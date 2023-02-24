@@ -8,7 +8,6 @@ type namecheapConfig struct {
 	Username *string `cty:"username" hcl:"username"`
 	APIUser  *string `cty:"api_user" hcl:"api_user"`
 	APIKey   *string `cty:"api_key" hcl:"api_key"`
-	ClientIP *string `cty:"client_ip" hcl:"client_ip"`
 }
 
 func ConfigInstance() interface{} {
