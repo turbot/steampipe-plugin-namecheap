@@ -25,6 +25,8 @@ Configure your account details in `~/.steampipe/config/namecheap.spc`:
 
 ```hcl
 connection "namecheap" {
+  plugin = "namecheap"
+
   # Authentication information
   username  = "janedoe"
   api_key   = "33d0d62a6a163083ba7b3bab31bd6612"
