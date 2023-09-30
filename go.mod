@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/namecheap/go-namecheap-sdk/v2 v2.1.0
-	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.0
+	github.com/turbot/steampipe-plugin-sdk/v5 v5.6.1
 )
 
 require (
