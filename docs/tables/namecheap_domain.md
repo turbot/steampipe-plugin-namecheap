@@ -16,7 +16,15 @@ The `namecheap_domain` table provides insights into domains registered with Name
 ### List domains
 Explore which domains are nearing their expiration dates to ensure timely renewals and uninterrupted service.
 
-```sql
+```sql+postgres
+select
+  domain,
+  expires
+from
+  namecheap_domain;
+```
+
+```sql+sqlite
 select
   domain,
   expires
@@ -27,7 +35,17 @@ from
 ### Get a specific domain
 Discover the expiration date of a specific domain to stay updated and renew it before it lapses. This query is beneficial for domain management, ensuring uninterrupted online presence.
 
-```sql
+```sql+postgres
+select
+  domain,
+  expires
+from
+  namecheap_domain
+where
+  domain = 'steampipe.io';
+```
+
+```sql+sqlite
 select
   domain,
   expires
@@ -40,7 +58,7 @@ where
 ### Domains expiring in the next 90 days
 Explore which domains are due to expire in the next 90 days. This can be particularly useful for domain renewal management, ensuring that you don't lose control of important domains due to overlooked expiration dates.
 
-```sql
+```sql+postgres
 select
   domain,
   expires,
@@ -51,10 +69,21 @@ where
   expires < (current_date + interval '90 days');
 ```
 
+```sql+sqlite
+select
+  domain,
+  expires,
+  julianday('now') - julianday(expires)
+from
+  namecheap_domain
+where
+  julianday(expires) < julianday(date('now','+90 day'));
+```
+
 ### Domains by date created at Namecheap
 Discover the segments that have been recently established on Namecheap. This can help users identify new domains and understand their age, facilitating better management and oversight of their online properties.
 
-```sql
+```sql+postgres
 select
   domain,
   created,
@@ -65,10 +94,21 @@ order by
   created;
 ```
 
+```sql+sqlite
+select
+  domain,
+  created,
+  julianday('now') - julianday(created) as age_created
+from
+  namecheap_domain
+order by
+  created;
+```
+
 ### Domains without auto-renew enabled
 Discover the domains that do not have the auto-renew feature enabled. This can help manage domain expiry and avoid losing access to your domains due to missed renewals.
 
-```sql
+```sql+postgres
 select
   domain,
   expires
@@ -78,14 +118,33 @@ where
   not auto_renew;
 ```
 
+```sql+sqlite
+select
+  domain,
+  expires
+from
+  namecheap_domain
+where
+  auto_renew = 0;
+```
+
 ### Domains and their nameservers
 Explore which domains are associated with specific nameservers. This is useful in managing and understanding the distribution of your domains across different nameservers.
 
-```sql
+```sql+postgres
 select
   domain,
   ns
 from
   namecheap_domain,
   jsonb_array_elements_text(nameservers) as ns;
+```
+
+```sql+sqlite
+select
+  domain,
+  ns.value
+from
+  namecheap_domain,
+  json_each(nameservers) as ns;
 ```

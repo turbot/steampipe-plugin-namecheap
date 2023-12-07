@@ -16,7 +16,22 @@ The `namecheap_domain_host` table provides insights into the DNS host records co
 ### List domain host records
 Discover the segments that contain specific details of a domain's host records, such as its name and address. This can be useful in managing and organizing your domains, particularly in identifying which domains have specific host settings.
 
-```sql
+```sql+postgres
+select
+  domain,
+  name,
+  type,
+  address,
+  ttl,
+  mx_pref
+from
+  namecheap_domain_host
+order by
+  domain,
+  name;
+```
+
+```sql+sqlite
 select
   domain,
   name,
@@ -34,7 +49,21 @@ order by
 ### List host records for a given domain
 Explore the host records associated with a particular domain to gain insights into its configuration and settings. This can be especially useful for managing and troubleshooting domain-related issues.
 
-```sql
+```sql+postgres
+select
+  domain,
+  name,
+  type,
+  address,
+  ttl,
+  mx_pref
+from
+  namecheap_domain_host
+where
+  domain = 'steampipe.io';
+```
+
+```sql+sqlite
 select
   domain,
   name,
@@ -51,7 +80,19 @@ where
 ### List CNAME records
 Explore which domain names are associated with specific addresses, useful for identifying potential redirections or aliases. This can provide insights into your domain hosting configuration for better management and security.
 
-```sql
+```sql+postgres
+select
+  domain,
+  name,
+  address,
+  ttl
+from
+  namecheap_domain_host
+where
+  type = 'CNAME';
+```
+
+```sql+sqlite
 select
   domain,
   name,
