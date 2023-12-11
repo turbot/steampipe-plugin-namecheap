@@ -8,6 +8,7 @@ short_name: "namecheap"
 description: "Steampipe plugin to query domains, DNS host records and more from Namecheap."
 og_description: "Query Namecheap with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/namecheap-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Namecheap + Steampipe
