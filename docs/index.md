@@ -8,13 +8,14 @@ short_name: "namecheap"
 description: "Steampipe plugin to query domains, DNS host records and more from Namecheap."
 og_description: "Query Namecheap with SQL! Open source CLI. No DB required."
 og_image: "/images/plugins/turbot/namecheap-social-graphic.png"
+engines: ["steampipe", "sqlite", "postgres", "export"]
 ---
 
 # Namecheap + Steampipe
 
 [Namecheap](https://namecheap.com) is a domain name registrar and web hosting company
 
-[Steampipe](https://steampipe.io) is an open source CLI to instantly query cloud APIs using SQL.
+[Steampipe](https://steampipe.io) is an open-source zero-ETL engine to instantly query cloud APIs using SQL.
 
 List domains in your Namecheap account:
 
@@ -94,7 +95,4 @@ export NAMECHEAP_API_USER=janedoe
 export NAMECHEAP_API_KEY=33d0d62a6a163083ba7b3bab31bd6612
 ```
 
-## Get involved
 
-- Open source: https://github.com/turbot/steampipe-plugin-namecheap
-- Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
