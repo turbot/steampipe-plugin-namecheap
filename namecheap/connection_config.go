@@ -5,9 +5,9 @@ import (
 )
 
 type namecheapConfig struct {
-	Username *string `hcl:"username" hcl:"username"`
-	APIUser  *string `hcl:"api_user" hcl:"api_user"`
-	APIKey   *string `hcl:"api_key" hcl:"api_key"`
+	Username *string `hcl:"username"`
+	APIUser  *string `hcl:"api_user"`
+	APIKey   *string `hcl:"api_key"`
 }
 
 func ConfigInstance() interface{} {
