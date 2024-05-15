@@ -21,7 +21,7 @@ func tableNamecheapDomainHost(ctx context.Context) *plugin.Table {
 				{Name: "domain", Require: plugin.Optional},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "domain", Type: proto.ColumnType_STRING, Description: "Name of the domain, e.g. steampipe.io."},
 			{Name: "name", Type: proto.ColumnType_STRING, Description: "Name of the host, e.g. www or @ for the root domain."},
@@ -37,7 +37,7 @@ func tableNamecheapDomainHost(ctx context.Context) *plugin.Table {
 			{Name: "is_active", Type: proto.ColumnType_BOOL, Description: "True if the record is active."},
 			{Name: "is_ddns_enabled", Type: proto.ColumnType_BOOL, Transform: transform.FromField("IsDDNSEnabled"), Description: "True if dynamic DNS is enabled."},
 			{Name: "is_using_our_dns", Type: proto.ColumnType_BOOL, Description: "True if the domain is using Namecheap DNS."},
-		},
+		}),
 	}
 }
 
