@@ -20,7 +20,7 @@ func tableNamecheapDomain(ctx context.Context) *plugin.Table {
 				{Name: "domain", Require: plugin.Optional},
 			},
 		},
-		Columns: []*plugin.Column{
+		Columns: commonColumns([]*plugin.Column{
 			// Top columns
 			{Name: "domain", Type: proto.ColumnType_STRING, Transform: transform.FromField("Name"), Description: "Name of the domain, e.g. steampipe.io."},
 			{Name: "expires", Type: proto.ColumnType_TIMESTAMP, Transform: transform.FromField("Expires").Transform(dateTimeToTimestamp), Description: "Time when the domain expires."},
@@ -36,7 +36,7 @@ func tableNamecheapDomain(ctx context.Context) *plugin.Table {
 			{Name: "nameservers", Type: proto.ColumnType_JSON, Hydrate: getDomainInfo, Transform: transform.FromField("DnsDetails.Nameservers"), Description: "Array of nameservers for the domain."},
 			{Name: "user", Type: proto.ColumnType_STRING, Description: "Namecheap user who owns the domain, e.g. janedoe."},
 			{Name: "whois_guard", Type: proto.ColumnType_STRING, Description: "Status of WhoisGuard, e.g. ENABLED, NOTPRESENT, etc."},
-		},
+		}),
 	}
 }
 
