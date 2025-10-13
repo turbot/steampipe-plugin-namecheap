@@ -1,3 +1,10 @@
+## v1.2.0 [2025-10-13]
+
+_Dependencies_
+
+- Recompiled plugin with Go version `1.24`. ([#27](https://github.com/turbot/steampipe-plugin-namecheap/pull/27))
+- Recompiled plugin with [steampipe-plugin-sdk v5.13.1](https://github.com/turbot/steampipe-plugin-sdk/blob/develop/CHANGELOG.md#v5131-2025-09-25) that addresses critical and high vulnerabilities in dependent packages. ([#28](https://github.com/turbot/steampipe-plugin-namecheap/pull/28))
+
 ## v1.1.1 [2025-04-18]
 
 _Bug fixes_
