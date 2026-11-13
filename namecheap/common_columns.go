@@ -3,10 +3,10 @@ package namecheap
 import (
 	"context"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
-	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v5/memoize"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v6/memoize"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
 )
 
 func commonColumns(c []*plugin.Column) []*plugin.Column {
@@ -38,7 +38,7 @@ func getUsernameCacheKey(ctx context.Context, d *plugin.QueryData, h *plugin.Hyd
 
 func getUsernameUncached(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (interface{}, error) {
 
-	client, err := connect(ctx, d,)
+	client, err := connect(ctx, d)
 	if err != nil {
 		return nil, err
 	}
