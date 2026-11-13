@@ -1,7 +1,7 @@
 package namecheap
 
 import (
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
 )
 
 type namecheapConfig struct {
@@ -15,9 +15,9 @@ func ConfigInstance() interface{} {
 }
 
 func GetConfig(connection *plugin.Connection) namecheapConfig {
-	if connection == nil || connection.Config == nil {
+	if connection == nil || connection.GetConfig() == nil {
 		return namecheapConfig{}
 	}
-	config, _ := connection.Config.(namecheapConfig)
+	config, _ := connection.GetConfig().(namecheapConfig)
 	return config
 }

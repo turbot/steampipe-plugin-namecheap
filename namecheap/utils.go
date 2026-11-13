@@ -7,8 +7,8 @@ import (
 
 	"github.com/namecheap/go-namecheap-sdk/v2/namecheap"
 
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v6/plugin/transform"
 )
 
 func connect(ctx context.Context, d *plugin.QueryData) (*namecheap.Client, error) {
